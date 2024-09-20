@@ -1,0 +1,23 @@
+{
+  "value": [
+    {
+      "id": 1,
+      "roomNumber": 15,
+      "customerName": "Berkay Arslan"
+    },
+    {
+      "id": 2,
+      "roomNumber": 20,
+      "customerName": "İrem Yaprak"
+    },
+    {
+      "id": 4,
+      "roomNumber": 240,
+      "customerName": "Mert Ercan"
+    }
+  ],
+  "formatters": [],
+  "contentTypes": [],
+  "declaredType": null,
+  "statusCode": 200
+}

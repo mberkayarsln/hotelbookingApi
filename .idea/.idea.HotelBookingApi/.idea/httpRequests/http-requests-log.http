@@ -1,0 +1,66 @@
+GET http://localhost:5117/api/Booking/GetAll
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/JetBrains Rider 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2024-09-20T135553.200.json
+
+###
+
+GET http://localhost:5117/api/Booking/Get
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/JetBrains Rider 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2024-09-20T133940.200.json
+
+###
+
+GET http://localhost:5117/api/Booking/Get
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/JetBrains Rider 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2024-09-20T133851.500.txt
+
+###
+
+GET http://localhost:5117/api/Booking/Get
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/JetBrains Rider 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2024-09-20T133814.500.txt
+
+###
+
+GET http://localhost:5117/api/Booking/Get
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/JetBrains Rider 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2024-09-20T133721.500.txt
+
+###
+
+GET http://localhost:5117
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/JetBrains Rider 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+###
+
+GET http://localhost:5117/
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/JetBrains Rider 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+###
+
