@@ -1,6 +1,8 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using HotelBookingApi.Identity;
+using HotelBookingApi.Models;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -20,24 +22,29 @@ public class AuthController : Controller
     }
 
     [HttpPost]
-    public IActionResult Login([FromBody] LoginRequest request)
+    public IActionResult Login([FromBody] LoginModel model)
     {
-        if (request.Email == "mberkayarslann@gmail.com" && request.Password == "123456")
+        if (model.Username == "mberkayarslann@gmail.com" && model.Password == "123456")
         {
-            var token = GenerateJwtToken(request.Email);
+            var token = GenerateJwtToken(model.Username, model.isAdmin);
             return Ok(token);
         }
 
         return Unauthorized();
     }
 
-    private string GenerateJwtToken(string email)
+    private string GenerateJwtToken(string email, bool isAdmin)
     {
-        var claims = new[]
+        var claims = new List<Claim>
         {
             new Claim(JwtRegisteredClaimNames.Sub, email),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
         };
+
+        if (isAdmin)
+        {
+            claims.Add(new Claim(IdentityData.AdminUserClaimName, "true"));
+        }
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:Key"]));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

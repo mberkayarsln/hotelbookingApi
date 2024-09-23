@@ -1,11 +1,11 @@
 using HotelBookingApi.Data;
+using HotelBookingApi.Identity;
 using HotelBookingApi.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelBookingApi.Controllers;
 
-[Authorize]
 [Route("api/[controller]/[action]")]
 [ApiController]
 public class BookingController : Controller
@@ -17,6 +17,7 @@ public class BookingController : Controller
         _context = context;
     }
 
+    [Authorize]
     [HttpGet]
     public JsonResult Get(int id)
     {
@@ -30,6 +31,7 @@ public class BookingController : Controller
         return Json(Ok(booking));
     }
 
+    [Authorize]
     [HttpGet]
     public JsonResult GetAll()
     {
@@ -37,6 +39,7 @@ public class BookingController : Controller
         return Json(Ok(bookings));
     }
 
+    [Authorize(IdentityData.AdminUserPolicyName)]
     [HttpPost]
     public JsonResult Post(Booking booking)
     {
@@ -45,6 +48,7 @@ public class BookingController : Controller
         return Json(Ok(booking));
     }
 
+    [Authorize(IdentityData.AdminUserPolicyName)]
     [HttpPut]
     public JsonResult Put(Booking booking)
     {
@@ -53,6 +57,7 @@ public class BookingController : Controller
         return Json(Ok(booking));
     }
 
+    [Authorize(IdentityData.AdminUserPolicyName)]
     [HttpDelete]
     public JsonResult Delete(int id)
     {
@@ -62,7 +67,7 @@ public class BookingController : Controller
         {
             return Json(NotFound());
         }
-        
+
         _context.Bookings.Remove(booking);
         _context.SaveChanges();
         return Json(NoContent());

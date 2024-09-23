@@ -1,5 +1,6 @@
 using System.Text;
 using HotelBookingApi.Data;
+using HotelBookingApi.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -33,7 +34,12 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(
+    options =>
+    {
+        options.AddPolicy(IdentityData.AdminUserPolicyName,
+            p => { p.RequireClaim(IdentityData.AdminUserClaimName, "true"); });
+    });
 
 builder.Services.AddDbContext<ApiDbContext>(options =>
 {
