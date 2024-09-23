@@ -1,9 +1,11 @@
 using HotelBookingApi.Data;
 using HotelBookingApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelBookingApi.Controllers;
 
+[Authorize]
 [Route("api/[controller]/[action]")]
 [ApiController]
 public class BookingController : Controller
@@ -55,6 +57,12 @@ public class BookingController : Controller
     public JsonResult Delete(int id)
     {
         var booking = _context.Bookings.FirstOrDefault(b => b.Id == id);
+
+        if (booking == null)
+        {
+            return Json(NotFound());
+        }
+        
         _context.Bookings.Remove(booking);
         _context.SaveChanges();
         return Json(NoContent());
